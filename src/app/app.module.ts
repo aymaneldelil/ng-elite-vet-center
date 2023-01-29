@@ -4,10 +4,16 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { Page403Component } from './redirect/page403/page403.component';
+import { Page404Component } from './redirect/page404/page404.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    Page403Component,
+    Page404Component
+    
   ],
   imports: [
     BrowserModule,
