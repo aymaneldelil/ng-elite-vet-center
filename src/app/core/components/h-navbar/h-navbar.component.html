@@ -1,0 +1,44 @@
+<header>
+    <mat-toolbar>
+        <div class="logo">
+            <img src="./assets/icons/svg-elite-icon.svg" alt="Elite Veterinary Center logo" srcset="">
+        </div>
+
+        <div class="routing">
+            <button mat-button class="example-icon">
+                Appointment
+            </button>
+            <!-- ------------ -->
+            <button mat-button class="example-icon">
+                Petshop
+            </button>
+            <!-- ------------ -->
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="login register">
+                <mat-icon>account_circle</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                    <mat-icon>login</mat-icon>
+                    <span>Login</span>
+                </button>
+                <!-- ------------ -->
+                <button mat-menu-item>
+                    <!-- <img mat-list-icon src="./assets/icons/svg-signup.svg" alt="" srcset=""> -->
+                    <mat-icon svgIcon="signup" ></mat-icon>
+                    <span>Register</span>
+                </button>
+            </mat-menu>
+
+        </div>
+        <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>My App</span>
+        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+          <mat-icon>share</mat-icon>
+        </button> -->
+    </mat-toolbar>
+</header>
