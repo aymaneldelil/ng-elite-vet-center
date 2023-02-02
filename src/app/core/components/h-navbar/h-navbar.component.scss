@@ -1,0 +1,23 @@
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: all ease-in-out 0.3s;
+    .mat-toolbar {
+
+        display: flex;
+        justify-content: space-between;
+
+        .logo {
+            img {
+                width: 50px;
+            }
+        }
+    }
+}
+// -------------
+.changeOnScroll {
+    position: fixed;
+    top: -70px;
+    width: 100%;
+}
