@@ -1,0 +1,53 @@
+@use '../../../../style/color' as colors;
+@use '../../../../style/mixins' as mixins;
+@use '../../../../style/variables' as variables;
+
+//---------------------------------------------------------------------
+.service {
+    margin-top: calc(variables.$size * 5);
+    
+    @include mixins.display-flex;
+    @include mixins.justify-content(center);
+    @include mixins.align-items(center);
+
+    .container {
+        width: 90%;
+
+        @include mixins.display-flex;
+        @include mixins.justify-content(space-between);
+        @include mixins.flex-wrap(wrap);
+
+        .service-item {
+            width: clamp(150px, 20%, 250px);
+            height: 150px;
+            margin-bottom: calc(variables.$size * 2);
+
+            @include mixins.display-flex;
+            @include mixins.flex;
+            @include mixins.justify-content(center);
+            @include mixins.align-items(center);
+            @include mixins.flex-direction(column);
+            border: 2px solid #00000000;
+            transition: all ease-in-out 0.3s;
+
+            cursor: pointer;
+
+            &:hover {
+                @include mixins.border-radius(variables.$size);
+                transform: translateY(-10px);
+                border: 2px solid colors.$primary;
+            }
+
+            .s-icon {
+                width: 70px;
+            }
+
+            .s-title {
+                font-weight: 600;
+                color: colors.$primary;
+
+            }
+
+        }
+    }
+}

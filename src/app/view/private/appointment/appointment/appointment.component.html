@@ -1,23 +1,28 @@
+<section class="appointment">
 
-  <mat-stepper [linear]="isLinear" #stepper>
+  <mat-stepper #stepper [orientation]="(stepperOrientation | async)!">
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Fill out your name</ng-template>
-        <mat-form-field appearance="fill">
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-        </mat-form-field>
+
+        <!-- --------- -->
+        <h3>Who is the appointment for? </h3>
+        <mat-button-toggle-group formControlName="firstCtrl" name="pet type" aria-label="Pet">
+          <app-appointment-toggle (click)="stepNext(stepper)" matStepperNext toggleValue="dog" toggleTitle="Dog"
+            [toggleSvgUrl]="svgUrls['dog']"></app-appointment-toggle>
+          <app-appointment-toggle (click)="stepNext(stepper)" matStepperNext toggleValue="cat" toggleTitle="Cat"
+            [toggleSvgUrl]="svgUrls['cat']"></app-appointment-toggle>
+        </mat-button-toggle-group>
+        <!-- --------- -->
         <div>
-          <button mat-button matStepperNext>Next</button>
+          <!-- <button mat-button matStepperNext>Next</button> -->
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+    <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup">
         <mat-form-field appearance="fill">
           <mat-label>Address</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                 required>
+          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
@@ -25,12 +30,13 @@
         </div>
       </form>
     </mat-step>
+
     <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
+      <!-- <ng-template matStepLabel>Done</ng-template> -->
       <p>You are now done.</p>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
       </div>
     </mat-step>
   </mat-stepper>
+</section>

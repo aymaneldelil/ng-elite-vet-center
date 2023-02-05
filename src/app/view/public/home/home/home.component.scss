@@ -1,23 +1,47 @@
+@use '../../../../style/color' as color;
+@use '../../../../style/variables' as variables;
+@use '../../../../style/mixins' as mixins;
 
-@import '../../../../style/color';
-@import '../../../../style/mixins';
 // ---------------------------------------------------------------------------------------------------------------------------------------------
 .home-page {
 
+    *> {
+        overflow: hidden;
+    }
+
     .header {
+        overflow: hidden;
 
-        article{
+        min-height: 500px;
+        background: rgb(16, 109, 106);
+        background-image: url(../../../../../assets/icons/svg-paws-pattern.svg);
+        background-size: 200px;
 
-            h2{
-                color: $tertiary;
+        @include mixins.display-flex;
+        @include mixins.flex-wrap(wrap);
+        @include mixins.justify-content(space-around);
+        @include mixins.align-items(center);
+
+        .header-article {
+            width: clamp(200px , 50% , 500px);
+
+            h1 {
+                font-size: calc(variables.$size * 4);
+                color: color.$secondary;
+
+                span {
+                    color: color.$tertiary;
+                    display: block;
+                }
             }
         }
-        height: 500px;
-        background: rgb(16,109,106);
-        // background: linear-gradient(180deg, rgba(16,109,106,1) 35%, rgba(2,47,46,1) 100%); 
-        background-image : url(../../../../../assets/icons/svg-paws-pattern.svg)  ;
-        background-size: 200px;
-        // background:  url(../../../../../assets/svg-paws-pattern.svg) 200px ;
+
+        .header-img {
+            img {
+                width: calc(variables.$size * 35);
+            }
+        }
+
     }
 
 }

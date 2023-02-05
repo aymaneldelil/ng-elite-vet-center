@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppointmentComponent } from './appointment/appointment.component';
 
 const routes: Routes = [
-  { path: "" , component:AppointmentComponent},
+  { path: "", component: AppointmentComponent },
 
 ];
 @NgModule({

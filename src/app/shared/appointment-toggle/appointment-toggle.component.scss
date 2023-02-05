@@ -1,0 +1,26 @@
+@use '../../style/color' as colors;
+@use '../../style/mixins' as mixins;
+@use '../../style/variables' as variables;
+
+
+
+.toggle {
+
+    border: 2px solid  colors.$secondary;
+    border-radius: variables.$size;
+    margin: 0 20px;
+
+
+    .mat-button-toggle {
+        img {
+            width: 80px;
+        }
+
+        span {
+            display: block;
+            color: colors.$primary;
+            font-weight: 600;
+        }
+    }
+
+}

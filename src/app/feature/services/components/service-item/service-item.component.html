@@ -1,0 +1,13 @@
+<section class="service">
+    <div class="container">
+        <!-- ------ -->
+        <div class="service-item"  *ngFor="let s of serviceData">
+            <div class="s-icon">
+                <img [src]=s.svgUrl alt="" srcset="">
+            </div>
+            <div class="s-title">
+                {{s.title}}
+            </div>
+        </div>
+    </div>
+</section>

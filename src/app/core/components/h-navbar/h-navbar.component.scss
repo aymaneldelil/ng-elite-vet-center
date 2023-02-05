@@ -1,13 +1,16 @@
+@use '../../../style/color' as color;
+@use '../../../style/mixins' as mixins;
+@use '../../../style/variables' as variable;
+
 header {
     position: fixed;
     top: 0;
     width: 100%;
     transition: all ease-in-out 0.3s;
     .mat-toolbar {
-
-        display: flex;
-        justify-content: space-between;
-
+        background-color: color.$secondary;
+        @include mixins.display-flex;
+        @include mixins.justify-content(space-between);
         .logo {
             img {
                 width: 50px;

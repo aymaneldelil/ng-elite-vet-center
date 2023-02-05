@@ -1,0 +1,41 @@
+@use '../../style/color' as color;
+@use '../../style/mixins' as mixins;
+@use '../../style/variables' as variables;
+
+
+.section-title {
+    padding-top: calc(variables.$size *2 );
+    width: 100%;
+  
+    @include mixins.display-flex;
+    @include mixins.justify-content(center);
+    @include mixins.align-items(center);
+
+    h3 {
+        font-family: 'Rancho', cursive;
+        font-size: calc(variables.$size * 5);
+        text-align: center;
+        position: relative;
+        color: color.$primary;
+
+        &::after,
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            // transform: translateY(-50%);
+            background-image: url(../../../assets/icons/svg-paws.svg);
+            width: 45px;
+            height: 45px;
+        }
+
+        &::after {
+            right: -50%;
+        }
+
+        &::before {
+            left: -50%;
+            @include mixins.scaleX(-1)
+        }
+    }
+}

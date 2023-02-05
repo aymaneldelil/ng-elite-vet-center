@@ -1,9 +1,8 @@
 <header [class.changeOnScroll]="isVisible">
     <mat-toolbar>
-        <div class="logo">
+        <div class="logo" (click)="homeRoute()">
             <img src="./assets/icons/svg-elite-icon.svg" alt="Elite Veterinary Center logo" srcset="">
         </div>
-
         <div class="routing">
             <button (click)="appointmentRoute()" mat-button >
                 Appointment

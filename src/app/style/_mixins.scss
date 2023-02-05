@@ -287,3 +287,8 @@
     -webkit-box-shadow: $left $top $radius $color;
     -moz-box-shadow: $left $top $radius $color;
 }
+
+@mixin scaleX($value : -1) {
+    -webkit-transform: scaleX($value);
+    transform: scaleX($value);
+}
