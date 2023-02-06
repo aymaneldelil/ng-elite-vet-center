@@ -1,0 +1,88 @@
+@use '../../../style/color' as colors;
+@use '../../../style/mixins' as mixins;
+@use '../../../style/variables' as variables;
+
+footer {
+
+
+    flex: 0 0 300px;
+
+    position: relative;
+    width: 100%;
+    color: white;
+
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    margin-top: 150px;
+    padding-top: 150px;
+
+    background-color: colors.$secondary;
+
+    *>ul {
+        list-style: none;
+
+    }
+
+    .container {
+        .location {
+            width: 80%;
+            margin: 0 auto;
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            iframe {
+                width: 100%;
+                height: 250px;
+                @include mixins.border-radius(20px);
+                border: none;
+            }
+
+            .location-icon {
+                position: absolute;
+                top: -30%;
+                left: 50%;
+                z-index: 10;
+                width: clamp(70px, 10%, 100px);
+
+            }
+
+        }
+
+        // ------------------------------------------------
+        .footer-data {
+
+            padding: calc(variables.$size * 3) 0;
+            @include mixins.display-flex();
+            @include mixins.flex-wrap(wrap);
+            @include mixins.justify-content(space-evenly);
+            background-color: colors.$primary;
+
+
+            .column {
+                .column-title {
+                    padding-bottom: 10px
+                }
+            }
+
+            .clinic {
+                // .logo {}
+
+                .contact {
+                    @include mixins.display-flex();
+                    @include mixins.flex-wrap(wrap);
+                    @include mixins.justify-content(space-evenly);
+
+                    img {
+                        cursor: pointer;
+                        width: 35px;
+                    }
+                }
+            }
+
+        }
+    }
+
+}

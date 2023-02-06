@@ -4,14 +4,31 @@
             <img src="./assets/icons/svg-elite-icon.svg" alt="Elite Veterinary Center logo" srcset="">
         </div>
         <div class="routing">
-            <button (click)="appointmentRoute()" mat-button >
+            <button (click)="appointmentRoute()" mat-button>
                 Appointment
             </button>
             <!-- ------------ -->
-            <button  (click)="petshopRoute()"  mat-button >
+            <button (click)="petshopRoute()" mat-button>
                 Pet Shop
             </button>
             <!-- ------------ -->
+            <button mat-icon-button [matMenuTriggerFor]="lang" aria-label="Select Language">
+                <mat-icon>language</mat-icon>
+            </button>
+            <mat-menu class="lang" #lang="matMenu">
+             
+                <button  mat-menu-item>
+                    <mat-icon svgIcon="lang-en"></mat-icon>
+                    <span>English</span>
+                </button>
+                <!-- ------------ -->
+                <button mat-menu-item>
+                    <mat-icon svgIcon="lang-ar"></mat-icon>
+                    <!-- <img src="./assets/icons/svg-lang-ar.svg" alt="" srcset=""> -->
+                    <span>عربي</span>
+                </button>
+            </mat-menu>
+            <!-- -------------------- -->
             <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="login register">
                 <mat-icon>account_circle</mat-icon>
             </button>
@@ -22,12 +39,12 @@
                 </button>
                 <!-- ------------ -->
                 <button (click)="signupRoute()" mat-menu-item>
-                    <mat-icon svgIcon="signup" ></mat-icon>
+                    <mat-icon svgIcon="signup"></mat-icon>
                     <span>Register</span>
                 </button>
             </mat-menu>
 
         </div>
- 
+
     </mat-toolbar>
 </header>

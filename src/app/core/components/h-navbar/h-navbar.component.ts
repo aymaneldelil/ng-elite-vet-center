@@ -40,6 +40,19 @@ export class HNavbarComponent implements OnInit {
         '../../../../assets/icons/svg-signup.svg'
       )
     );
+    //-----------------
+    this.matIconRegistry.addSvgIcon(
+      'lang-en',
+      this.domSanitizer.bypassSecurityTrustResourceUrl(
+        '../../../../assets/icons/svg-lang-en.svg'
+      )
+    );
+    this.matIconRegistry.addSvgIcon(
+      'lang-ar',
+      this.domSanitizer.bypassSecurityTrustResourceUrl(
+        '../../../../assets/icons/svg-lang-ar.svg'
+      )
+    );
   }
   //---------------------------------------------------------------------------------------------------------------------------------------------
   ngOnInit(): void {}

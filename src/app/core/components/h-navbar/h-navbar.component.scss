@@ -3,7 +3,10 @@
 @use '../../../style/variables' as variable;
 
 header {
+
+    flex: 0 0 80px;
     position: fixed;
+    z-index: 11;
     top: 0;
     width: 100%;
     transition: all ease-in-out 0.3s;
@@ -14,6 +17,17 @@ header {
         .logo {
             img {
                 width: 50px;
+            }
+        }
+        .routing{
+
+            .lang{
+                button{
+                    
+                    img{
+                        width: 20px;
+                    }
+                }
             }
         }
     }
