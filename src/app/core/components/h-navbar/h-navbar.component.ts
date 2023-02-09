@@ -1,4 +1,11 @@
-import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import {
+  Component,
+  Inject,
+  InjectionToken,
+  OnInit,
+  PLATFORM_ID,
+} from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -32,7 +39,8 @@ export class HNavbarComponent implements OnInit {
   constructor(
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
-    private router: Router
+    private router: Router,
+    @Inject(PLATFORM_ID) private _platform_id: InjectionToken<Object>
   ) {
     this.matIconRegistry.addSvgIcon(
       'signup',
@@ -55,9 +63,33 @@ export class HNavbarComponent implements OnInit {
     );
   }
   //---------------------------------------------------------------------------------------------------------------------------------------------
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (isPlatformBrowser(this._platform_id)) {
+      let scroll$ = fromEvent(window, 'scroll').pipe(
+        throttleTime(100),
+        map(() => window.pageYOffset),
+        pairwise(),
+        map(([y1, y2]): Direction => (y2 < y1 ? Direction.Up : Direction.Down)),
+        distinctUntilChanged()
+      );
 
-  public homeRoute(): void {    
+      let goingUp$ = scroll$
+        .pipe(
+          filter((direction) => direction === Direction.Up),
+          tap((t) => console.log('UP'))
+        )
+        .subscribe(() => (this.isVisible = false));
+
+      let goingDown$ = scroll$
+        .pipe(
+          filter((direction) => direction === Direction.Down),
+          tap((t) => console.log('DOWN'))
+        )
+        .subscribe(() => (this.isVisible = true));
+    }
+  }
+
+  public homeRoute(): void {
     this.router.navigate(['/']);
   }
   //---------------
@@ -79,26 +111,4 @@ export class HNavbarComponent implements OnInit {
   //---------------------------------------------------------------------------------------------------------------------------------------------
 
   public isVisible = false;
-
-  scroll$ = fromEvent(window, 'scroll').pipe(
-    throttleTime(100),
-    map(() => window.pageYOffset),
-    pairwise(),
-    map(([y1, y2]): Direction => (y2 < y1 ? Direction.Up : Direction.Down)),
-    distinctUntilChanged()
-  );
-
-  goingUp$ = this.scroll$
-    .pipe(
-      filter((direction) => direction === Direction.Up),
-      tap((t) => console.log('UP'))
-    )
-    .subscribe(() => (this.isVisible = false));
-
-  goingDown$ = this.scroll$
-    .pipe(
-      filter((direction) => direction === Direction.Down),
-      tap((t) => console.log('DOWN'))
-    )
-    .subscribe(() => (this.isVisible = true));
 }
